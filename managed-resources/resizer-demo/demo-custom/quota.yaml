@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: my-quota
+  namespace: demo-custom
+  annotations:
+    resizer.io/threshold: "50"
+    resizer.io/increment: "0.5"
+spec:
+  hard:
+    cpu: "1000m"
+    pods: "10"
