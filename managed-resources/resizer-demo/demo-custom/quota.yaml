@@ -8,5 +8,5 @@ metadata:
     resizer.io/increment: "0.5"
 spec:
   hard:
-    cpu: "1000m"
+    cpu: 1200m
     pods: "10"
