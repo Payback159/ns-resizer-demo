@@ -7,4 +7,4 @@ spec:
   hard:
     requests.cpu: "100m"
     requests.memory: "100Mi"
-    requests.storage: "1Gi"
+    requests.storage: "1229Mi"
