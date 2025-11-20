@@ -5,6 +5,6 @@ metadata:
   namespace: demo-statefulset-burst
 spec:
   hard:
-    requests.cpu: "100m"
-    requests.memory: "100Mi"
-    requests.storage: "1Gi"
+    requests.cpu: "720m"
+    requests.memory: "360Mi"
+    requests.storage: "4916Mi"
