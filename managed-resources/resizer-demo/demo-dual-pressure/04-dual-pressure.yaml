@@ -13,8 +13,8 @@ metadata:
   namespace: demo-dual-pressure
 spec:
   hard:
-    requests.cpu: "1000m"
-    requests.memory: "1Gi"
+    requests.cpu: 1200m
+    requests.memory: 1229Mi
     limits.cpu: "2000m"
     limits.memory: "2Gi"
 ---
@@ -30,8 +30,8 @@ spec:
     command: ["sh", "-c", "while true; do sleep 3600; done"]
     resources:
       requests:
-        cpu: "900m"    # 90%
-        memory: "900Mi" # ~88%
+        cpu: 1200m
+        memory: 1229Mi
       limits:
-        cpu: "1000m"
-        memory: "1Gi"
+        cpu: 1200m
+        memory: 1229Mi
