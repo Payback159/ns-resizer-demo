@@ -5,5 +5,5 @@ metadata:
   namespace: demo-burst
 spec:
   hard:
-    requests.cpu: "1200m"
+    requests.cpu: "500m"
     requests.memory: "1Gi"
