@@ -14,14 +14,30 @@ spec:
   hard:
     requests.storage: "5Gi"
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: large-pvc
+  name: storage-stress
   namespace: demo-storage
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: "6Gi" # 6Gi > 5Gi -> FailedCreate -> Resize
+  serviceName: "storage"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage
+  template:
+    metadata:
+      labels:
+        app: storage
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 6Gi # 6Gi > 5Gi -> FailedCreate -> Resize

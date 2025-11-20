@@ -32,3 +32,6 @@ spec:
       requests:
         cpu: "900m"    # 90%
         memory: "900Mi" # ~88%
+      limits:
+        cpu: "1000m"
+        memory: "1Gi"
