@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: demo-opt-out
   annotations:
-    resizer.io/enabled: "false"
+    resizer.io/enabled: "false" # Controller should ignore this

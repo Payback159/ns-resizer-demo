@@ -3,4 +3,5 @@ kind: Namespace
 metadata:
   name: demo-custom
   annotations:
-    resizer.io/cpu-threshold: "50"
+    resizer.io/enabled: "true"
+    resizer.io/cpu-threshold: "50" # Trigger at 50%

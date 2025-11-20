@@ -4,4 +4,3 @@ metadata:
   name: demo-multi-burst
   annotations:
     resizer.io/enabled: "true"
-    resizer.io/cpu-increment: "0.0" # No buffer to make calculation easy to verify

@@ -14,8 +14,9 @@ spec:
         app: burst
     spec:
       containers:
-        - name: nginx
-          image: nginx
-          resources:
-            requests:
-              cpu: "1000m"
+      - name: app
+        image: nginx
+        resources:
+          requests:
+            cpu: "1000m" # 1000m > 500m -> FailedCreate Event -> Resize
+            memory: "100Mi"

@@ -4,7 +4,6 @@ metadata:
   name: demo-storage
   annotations:
     resizer.io/enabled: "true"
-    resizer.io/threshold: "80" # Reagiert ab 80% Auslastung
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -13,37 +12,16 @@ metadata:
   namespace: demo-storage
 spec:
   hard:
-    requests.storage: 6Gi
+    requests.storage: "5Gi"
 ---
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: storage-app
+  name: large-pvc
   namespace: demo-storage
 spec:
-  serviceName: "storage-app"
-  replicas: 1
-  selector:
-    matchLabels:
-      app: storage-app
-  template:
-    metadata:
-      labels:
-        app: storage-app
-    spec:
-      containers:
-        - name: busybox
-          image: busybox
-          command: ["sh", "-c", "sleep 3600"]
-          volumeMounts:
-            - name: data
-              mountPath: /data
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            # 4.5Gi von 5Gi = 90% Auslastung -> Sollte Resize triggern
-            storage: 4.5Gi
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "6Gi" # 6Gi > 5Gi -> FailedCreate -> Resize

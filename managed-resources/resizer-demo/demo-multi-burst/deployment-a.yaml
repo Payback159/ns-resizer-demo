@@ -1,23 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workload-a
+  name: app-a
   namespace: demo-multi-burst
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: workload-a
+      app: app-a
   template:
     metadata:
       labels:
-        app: workload-a
+        app: app-a
     spec:
       containers:
-      - name: nginx
-        image: nginx:alpine
+      - name: app
+        image: nginx
         resources:
           requests:
-            cpu: "200m" # Needs 200m, Quota is 100m -> Deficit 100m
-          limits:
-            cpu: "200m"
+            cpu: "300m"

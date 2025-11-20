@@ -5,9 +5,10 @@ metadata:
   namespace: demo-standard
 spec:
   containers:
-    - name: busybox
-      image: busybox
-      command: ["sleep", "3600"]
-      resources:
-        requests:
-          cpu: "850m"
+  - name: stress
+    image: busybox
+    command: ["sh", "-c", "while true; do sleep 3600; done"]
+    resources:
+      requests:
+        cpu: "850m" # 85% of 1000m -> Triggers resize (Threshold 80%)
+        memory: "100Mi"
