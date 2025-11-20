@@ -5,4 +5,4 @@ metadata:
   namespace: demo-replicaset-burst
 spec:
   hard:
-    requests.cpu: "150m"
+    requests.cpu: "600m"
