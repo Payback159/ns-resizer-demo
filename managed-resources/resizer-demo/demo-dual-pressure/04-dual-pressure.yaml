@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-dual-pressure
+  annotations:
+    resizer.io/enabled: "true"
+    resizer.io/threshold: "80" # Reagiert ab 80% Auslastung
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: dual-quota
+  namespace: demo-dual-pressure
+spec:
+  hard:
+    requests.cpu: "1000m"
+    requests.memory: "1Gi"
+    limits.cpu: "2000m"
+    limits.memory: "2Gi"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pressure-app
+  namespace: demo-dual-pressure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pressure
+  template:
+    metadata:
+      labels:
+        app: pressure
+    spec:
+      containers:
+        - name: stress
+          image: busybox
+          command: ["sh", "-c", "sleep 3600"]
+          resources:
+            requests:
+              # 900m von 1000m = 90% Auslastung (CPU Trigger)
+              cpu: "900m"
+              # 900Mi von 1Gi (1024Mi) ≈ 88% Auslastung (Memory Trigger)
+              memory: "900Mi"
