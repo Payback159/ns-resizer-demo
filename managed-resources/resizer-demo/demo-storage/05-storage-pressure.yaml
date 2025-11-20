@@ -12,7 +12,7 @@ metadata:
   namespace: demo-storage
 spec:
   hard:
-    requests.storage: "5Gi"
+    requests.storage: 7373Mi
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -40,4 +40,4 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 6Gi # 6Gi > 5Gi -> FailedCreate -> Resize
+          storage: 7373Mi
