@@ -14,7 +14,7 @@ metadata:
 spec:
   hard:
     requests.cpu: 1200m
-    requests.memory: 1288490188800m
+    requests.memory: 1288490189
     limits.cpu: "2000m"
     limits.memory: "2Gi"
 ---
