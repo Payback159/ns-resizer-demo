@@ -12,7 +12,7 @@ metadata:
   namespace: demo-storage
 spec:
   hard:
-    requests.storage: "5Gi"
+    requests.storage: "7373Mi"
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -31,13 +31,13 @@ spec:
         app: storage
     spec:
       containers:
-      - name: nginx
-        image: nginx
+        - name: nginx
+          image: nginx
   volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 6Gi # 6Gi > 5Gi -> FailedCreate -> Resize
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 6Gi # 6Gi > 5Gi -> FailedCreate -> Resize
