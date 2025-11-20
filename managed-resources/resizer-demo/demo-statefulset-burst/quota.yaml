@@ -6,3 +6,4 @@ metadata:
 spec:
   hard:
     requests.cpu: "240m"
+    requests.storage: "1229Mi"
