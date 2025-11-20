@@ -5,5 +5,5 @@ metadata:
   namespace: demo-burst
 spec:
   hard:
-    cpu: 1440m
+    cpu: 2400m
     pods: "10"
