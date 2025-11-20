@@ -13,8 +13,8 @@ metadata:
   namespace: demo-dual-pressure
 spec:
   hard:
-    requests.cpu: "1000m"
-    requests.memory: "1Gi"
+    requests.cpu: 1200m
+    requests.memory: 1229Mi
     limits.cpu: "2000m"
     limits.memory: "2Gi"
 ---
