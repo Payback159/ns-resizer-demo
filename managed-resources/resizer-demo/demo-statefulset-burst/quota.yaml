@@ -5,4 +5,4 @@ metadata:
   namespace: demo-statefulset-burst
 spec:
   hard:
-    requests.cpu: "100m"
+    requests.cpu: "240m"
