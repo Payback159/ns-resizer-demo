@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: sts-burst-quota
+  namespace: demo-statefulset-burst
+spec:
+  hard:
+    requests.cpu: "100m"

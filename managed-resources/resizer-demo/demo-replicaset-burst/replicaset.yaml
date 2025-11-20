@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: burst-rs
+  namespace: demo-replicaset-burst
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: burst
+  template:
+    metadata:
+      labels:
+        app: burst
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "50Mi"
