@@ -13,7 +13,7 @@ metadata:
   namespace: demo-storage
 spec:
   hard:
-    requests.storage: "5Gi"
+    requests.storage: 6Gi
 ---
 apiVersion: apps/v1
 kind: StatefulSet
